@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FairGame</string>
+    <string name="action_settings">Settings</string>
+
+    <!--setup-->
+    <!--selectGateWay-->
+    <string name="selectgateway_cloud_btn">Cloud</string>
+    <string name="selectgateway_socket_btn">Socket</string>
+    <string name="selectgateway_bluetooth_btn">Bluetooth</string>
+</resources>

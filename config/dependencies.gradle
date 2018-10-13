@@ -1,0 +1,47 @@
+ext {
+
+    // Versions
+    supportVersion = '28.0.0'
+    supportAnnotationsVersion = '22.2.0'
+    supportConstraintVersion = '1.1.3'
+    supportTestRunnerVersion = '1.0.2'
+    supportTestEspressoVersion = '3.0.2'
+    architectureComponentVersion = '1.1.0'
+    junitVersion = '4.12'
+    baristaVersion = '1.7.0'
+
+    // Packages
+    supportPackage = 'com.android.support'
+    architecturePackage = 'android.arch.lifecycle'
+    junitPackage = 'junit'
+    baristaPackage = 'com.schibsted.spain'
+    architectureCorePackage = 'android.arch.core'
+    kotlinPackage = 'org.jetbrains.kotlin'
+
+    // Dependencies
+    supportDependencies = [
+            appCompat  : buildDependency(supportPackage, 'appcompat-v7', supportVersion),
+            design     : buildDependency(supportPackage, 'design', supportVersion),
+            annotations: buildDependency(supportPackage, 'support-annotations', supportAnnotationsVersion),
+            constraint : buildDependency("${supportPackage}.constraint", 'constraint-layout', supportConstraintVersion)
+    ]
+
+    architectureComponentDependencies = [
+            viewModelAndLiveData: buildDependency(architecturePackage, 'extensions', architectureComponentVersion)
+    ]
+
+    testingDependencies = [
+            junit             : buildDependency(junitPackage, 'junit', junitVersion),
+            barista           : buildDependency(baristaPackage, 'barista', baristaVersion),
+            liveDataTestHelper: buildDependency(architectureCorePackage, 'core-testing', architectureComponentVersion),
+            runner            : buildDependency("${supportPackage}.test", 'runner', supportTestRunnerVersion),
+            espresso          : buildDependency("${supportPackage}.test.espresso", 'espresso-core', supportTestEspressoVersion)
+    ]
+
+    kotlinDependency = buildDependency(kotlinPackage, 'kotlin-stdlib-jdk7', kotlin_version)
+}
+
+
+static String buildDependency(String pack, String dependency, String version) {
+    return "${pack}:${dependency}:${version}"
+}
