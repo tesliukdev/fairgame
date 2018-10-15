@@ -32,6 +32,7 @@ dependencies {
     implementation supportDependencies.appCompat
     implementation supportDependencies.constraint
     implementation supportDependencies.design
+    implementation architectureComponentDependencies.viewModelAndLiveData
     testImplementation testingDependencies.junit
     androidTestImplementation testingDependencies.runner
     androidTestImplementation testingDependencies.espresso

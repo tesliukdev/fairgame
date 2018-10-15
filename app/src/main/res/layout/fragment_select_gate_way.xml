@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.tesliukdev.fairgame.screens.setup.SelectGateWayViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screens.setup.SelectGateWayFragment"
+        tools:showIn="@layout/activity_select_gate_way">
+
+        <Button
+            android:id="@+id/cloud_button"
+            style="@style/AppStyle.Button"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:onClick="@{() -> viewModel.setCloud()}"
+            android:text="@string/selectgateway_cloud_btn"
+            app:layout_constraintBottom_toTopOf="@+id/socket_button"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <Button
+            android:id="@+id/socket_button"
+            style="@style/AppStyle.Button"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:onClick="@{() -> viewModel.setSocket()}"
+            android:text="@string/selectgateway_socket_btn"
+            app:layout_constraintBottom_toTopOf="@+id/bluetooth_button"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cloud_button" />
+
+        <Button
+            android:id="@+id/bluetooth_button"
+            style="@style/AppStyle.Button"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.setBluetooth()}"
+            android:text="@string/selectgateway_bluetooth_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/socket_button" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
