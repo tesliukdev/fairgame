@@ -32,6 +32,8 @@ dependencies {
     implementation supportDependencies.appCompat
     implementation supportDependencies.constraint
     implementation supportDependencies.design
+    implementation reactivexDependencies.rxAndroid
+    implementation reactivexDependencies.rxKotlin
     implementation architectureComponentDependencies.viewModelAndLiveData
     testImplementation testingDependencies.junit
     androidTestImplementation testingDependencies.runner

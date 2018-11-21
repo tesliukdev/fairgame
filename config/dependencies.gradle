@@ -9,6 +9,8 @@ ext {
     architectureComponentVersion = '1.1.1'
     junitVersion = '4.12'
     baristaVersion = '1.7.0'
+    rxKotlinVersion = '2.2.0'
+    rxAndroidVersion = '2.0.2'
 
     // Packages
     supportPackage = 'com.android.support'
@@ -17,6 +19,7 @@ ext {
     baristaPackage = 'com.schibsted.spain'
     architectureCorePackage = 'android.arch.core'
     kotlinPackage = 'org.jetbrains.kotlin'
+    reactivexPackage = 'io.reactivex.rxjava2'
 
     // Dependencies
     supportDependencies = [
@@ -24,6 +27,11 @@ ext {
             design     : buildDependency(supportPackage, 'design', supportVersion),
             annotations: buildDependency(supportPackage, 'support-annotations', supportAnnotationsVersion),
             constraint : buildDependency("${supportPackage}.constraint", 'constraint-layout', supportConstraintVersion)
+    ]
+
+    reactivexDependencies = [
+            rxAndroid: buildDependency(reactivexPackage, 'rxandroid', rxAndroidVersion),
+            rxKotlin : buildDependency(reactivexPackage, 'rxkotlin', rxKotlinVersion)
     ]
 
     architectureComponentDependencies = [
