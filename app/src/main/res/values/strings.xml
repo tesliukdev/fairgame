@@ -7,4 +7,11 @@
     <string name="selectgateway_cloud_btn">Cloud</string>
     <string name="selectgateway_socket_btn">Socket</string>
     <string name="selectgateway_bluetooth_btn">Bluetooth</string>
+
+    <!--RPS-->
+    <string name="rps_player_1">You</string>
+    <string name="rps_player_2">Computer</string>
+    <string name="rps_rock_btn">Rock</string>
+    <string name="rps_paper_btn">Paper</string>
+    <string name="rps_scissors_btn">Scissors</string>
 </resources>

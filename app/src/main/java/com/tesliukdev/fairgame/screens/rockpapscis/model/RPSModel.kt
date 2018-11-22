@@ -13,7 +13,7 @@ class RPSModel {
 
     init {
         player1.value = Player("You")
-        player1.value = Player("Computer")
+        player2.value = Player("Computer")
     }
 
     fun getPlayer2Move(): Observable<Int> {
@@ -26,10 +26,12 @@ class RPSModel {
             move1.doIBeat(move2) -> {
                 player1.value!!.score++
                 gameResult.value = player1.value!!.name + " won"
+                player1.postValue(player1.value)
             }
             else -> {
                 player2.value!!.score++
                 gameResult.value = player2.value!!.name + " won"
+                player2.postValue(player2.value)
             }
         }
     }

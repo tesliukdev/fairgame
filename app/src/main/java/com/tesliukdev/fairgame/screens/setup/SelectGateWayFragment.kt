@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.tesliukdev.fairgame.R
 import com.tesliukdev.fairgame.databinding.FragmentSelectGateWayBinding
+import com.tesliukdev.fairgame.screens.rockpapscis.RPSActivity
 
 /**
  * A placeholder fragment containing a simple view.
@@ -28,12 +29,12 @@ class SelectGateWayFragment : Fragment() {
     }
 
     private fun setListeners() {
-        viewModel.selectedGateWay.observe(this, Observer { next(it) })
+        viewModel.selectedGateWay.observe(this, Observer { next() })
         viewModel.error.observe(this, Observer { showDialog(it) })
     }
 
-    private fun next(gateWay: String?) {
-        Toast.makeText(context, "Game starts via $gateWay!", Toast.LENGTH_SHORT).show()
+    private fun next() {
+       startActivity(RPSActivity.getInstance(requireContext()))
     }
 
     @Suppress("UNUSED_ANONYMOUS_PARAMETER")

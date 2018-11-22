@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.tesliukdev.fairgame.screens.rockpapscis.RPSViewModel" />
+
+        <import type="com.tesliukdev.fairgame.screens.rockpapscis.model.Move" />
+
+        <variable
+            name="viewModel"
+            type="RPSViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/player1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="48dp"
+                android:text="@string/rps_player_1"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/player2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="48dp"
+                android:text="@string/rps_player_2"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/player1_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/player1"
+                android:layout_marginStart="48dp"
+                android:text="@{viewModel.player1Score}"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/player2_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/player2"
+                android:layout_marginEnd="48dp"
+                android:text="@{viewModel.player2Score}"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/player1_move"
+                android:layout_width="@dimen/image_button_size"
+                android:layout_height="@dimen/image_button_size"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/player1_score"
+                android:layout_marginStart="48dp"/>
+                <!--android:src="@{viewModel.player1Move == Move.ROCK ? @drawable/rock : viewModel.player1Move == Move.PAPER ? @drawable/paper : @drawable/scissors}" />-->
+
+            <ImageView
+                android:id="@+id/player2_move"
+                android:layout_width="@dimen/image_button_size"
+                android:layout_height="@dimen/image_button_size"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/player2_score"
+                android:layout_marginEnd="48dp"/>
+                <!--android:src="@{viewModel.player2Move == Move.ROCK ? @drawable/rock : viewModel.player2Move == Move.PAPER ? @drawable/paper : @drawable/scissors}" />-->
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@{viewModel.gameResult}"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_horizontal"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:onClick="@{() -> viewModel.onClickMoveButton(Move.ROCK)}"
+                android:src="@drawable/rock" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:onClick="@{() -> viewModel.onClickMoveButton(Move.PAPER)}"
+                android:src="@drawable/paper" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:onClick="@{() -> viewModel.onClickMoveButton(Move.SCISSORS)}"
+                android:src="@drawable/scissors" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>
