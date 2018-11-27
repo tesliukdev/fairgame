@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -35,6 +35,11 @@ dependencies {
     implementation reactivexDependencies.rxAndroid
     implementation reactivexDependencies.rxKotlin
     implementation architectureComponentDependencies.viewModelAndLiveData
+    implementation retrofitDependencies.retrofit
+    implementation retrofitDependencies.adapterRxjava2
+    implementation retrofitDependencies.converterGson
+    implementation daggerDependencies.dagger
+    kapt daggerDependencies.daggerCompiler
     testImplementation testingDependencies.junit
     androidTestImplementation testingDependencies.runner
     androidTestImplementation testingDependencies.espresso

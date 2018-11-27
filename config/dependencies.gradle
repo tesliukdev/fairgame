@@ -11,6 +11,8 @@ ext {
     baristaVersion = '1.7.0'
     rxKotlinVersion = '2.2.0'
     rxAndroidVersion = '2.0.2'
+    daggerVersion = '2.14.1'
+    retrofitVersion = '2.3.0'
 
     // Packages
     supportPackage = 'com.android.support'
@@ -20,6 +22,8 @@ ext {
     architectureCorePackage = 'android.arch.core'
     kotlinPackage = 'org.jetbrains.kotlin'
     reactivexPackage = 'io.reactivex.rxjava2'
+    daggerPackage = 'com.google.dagger'
+    retrofitPackage = 'com.squareup.retrofit2'
 
     // Dependencies
     supportDependencies = [
@@ -32,6 +36,17 @@ ext {
     reactivexDependencies = [
             rxAndroid: buildDependency(reactivexPackage, 'rxandroid', rxAndroidVersion),
             rxKotlin : buildDependency(reactivexPackage, 'rxkotlin', rxKotlinVersion)
+    ]
+
+    daggerDependencies = [
+            dagger: buildDependency(daggerPackage, 'dagger', daggerVersion),
+            daggerCompiler: buildDependency(daggerPackage, 'dagger-compiler', daggerVersion)
+    ]
+
+    retrofitDependencies = [
+            retrofit: buildDependency(retrofitPackage, 'retrofit', retrofitVersion),
+            adapterRxjava2: buildDependency(retrofitPackage, 'adapter-rxjava2', retrofitVersion),
+            converterGson: buildDependency(retrofitPackage, 'converter-gson', retrofitVersion)
     ]
 
     architectureComponentDependencies = [

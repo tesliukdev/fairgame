@@ -1,10 +1,12 @@
 package com.tesliukdev.fairgame.screens.rockpapscis.model
 
 import android.arch.lifecycle.MutableLiveData
-import com.tesliukdev.fairgame.utils.random
-import io.reactivex.Observable
+import com.tesliukdev.fairgame.gateway.cloud.rps.RpsCloud
+import javax.inject.Inject
 
-class RPSModel {
+class RPSModel
+@Inject
+constructor(private val rpsCloud: RpsCloud) {
 
     var player1 = MutableLiveData<Player>()
     var player2 = MutableLiveData<Player>()
@@ -16,8 +18,11 @@ class RPSModel {
         player2.value = Player("Computer")
     }
 
-    fun getPlayer2Move(): Observable<Int> {
-        return Observable.just((0..2).random())
+    //    fun getPlayer2Move(onMoveReceived: Consumer<in String>, onError: Consumer<in Throwable>) {
+    fun getPlayer2Move(onMoveReceived: ((Int) -> Unit), onError: ((Throwable) -> Unit)) {
+        rpsCloud.getMove()
+                .map { t: String -> t.toInt() }
+                .subscribe(onMoveReceived, onError)
     }
 
     fun fight(move1: Move, move2: Move) {

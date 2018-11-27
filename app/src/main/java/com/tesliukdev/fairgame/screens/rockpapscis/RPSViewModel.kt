@@ -4,8 +4,11 @@ import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
 import com.tesliukdev.fairgame.screens.rockpapscis.model.Move
 import com.tesliukdev.fairgame.screens.rockpapscis.model.RPSModel
+import javax.inject.Inject
 
-class RPSViewModel(private var rpsModel: RPSModel): ViewModel() {
+class RPSViewModel
+@Inject
+constructor(private var rpsModel: RPSModel): ViewModel() {
     var player1Score = ObservableField<String>("0")
     var player2Score = ObservableField<String>("0")
     var player1Move = ObservableField<Move?>()
@@ -22,8 +25,7 @@ class RPSViewModel(private var rpsModel: RPSModel): ViewModel() {
     fun onClickMoveButton(move: Move) {
         resetRound()
         player1Move.set(move)
-        rpsModel.getPlayer2Move()
-                .subscribe(this::onMoveReceived, this::onError)
+        rpsModel.getPlayer2Move(this::onMoveReceived, this::onError)
     }
 
     private fun onMoveReceived(move: Int) {
