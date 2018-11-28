@@ -5,17 +5,15 @@ import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.databinding.Observable
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.animation.AnimationUtils
 import com.tesliukdev.fairgame.R
-import com.tesliukdev.fairgame.dagger.CloudModule
-import com.tesliukdev.fairgame.dagger.DaggerCloudComponent
 import com.tesliukdev.fairgame.dagger.DaggerRpsComponent
 import com.tesliukdev.fairgame.databinding.ActivityRpsBinding
+import com.tesliukdev.fairgame.screens.BaseActivity
 import com.tesliukdev.fairgame.screens.rockpapscis.model.Move
 
 
-class RPSActivity : AppCompatActivity() {
+class RPSActivity : BaseActivity() {
 
     companion object {
         fun getInstance(context: Context): Intent = Intent(context, RPSActivity::class.java)
@@ -54,17 +52,19 @@ class RPSActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val rpsComponent = DaggerRpsComponent.builder().cloudComponent(
-                DaggerCloudComponent.builder()
-                        .cloudModule(CloudModule())
-                        .build()).build()
-
-        viewModel = rpsComponent.rpsViewModel
+        injectDagger()
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_rps)
         binding.viewModel = viewModel
         viewModel.player1Move.addOnPropertyChangedCallback(onPlayer1MoveCallback)
         viewModel.player2Move.addOnPropertyChangedCallback(onPlayer2MoveCallback)
+    }
+
+    private fun injectDagger() {
+        val rpsComponent = DaggerRpsComponent.builder()
+                .appComponent(appComponent())
+                .build()
+
+        viewModel = rpsComponent.rpsViewModel
     }
 }

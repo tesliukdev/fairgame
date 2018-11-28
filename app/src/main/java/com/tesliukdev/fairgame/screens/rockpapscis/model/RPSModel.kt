@@ -1,26 +1,28 @@
 package com.tesliukdev.fairgame.screens.rockpapscis.model
 
 import android.arch.lifecycle.MutableLiveData
-import com.tesliukdev.fairgame.gateway.cloud.rps.RpsCloud
+import com.tesliukdev.fairgame.gameconnector.GameConnector
+import com.tesliukdev.fairgame.gateway.Gateway
 import javax.inject.Inject
 
 class RPSModel
 @Inject
-constructor(private val rpsCloud: RpsCloud) {
+constructor(gameConnector: GameConnector) {
 
     var player1 = MutableLiveData<Player>()
     var player2 = MutableLiveData<Player>()
 
     var gameResult = MutableLiveData<String>()
+    var gateWay: Gateway
 
     init {
         player1.value = Player("You")
         player2.value = Player("Computer")
+        gateWay = gameConnector.gateway
     }
 
-    //    fun getPlayer2Move(onMoveReceived: Consumer<in String>, onError: Consumer<in Throwable>) {
     fun getPlayer2Move(onMoveReceived: ((Int) -> Unit), onError: ((Throwable) -> Unit)) {
-        rpsCloud.getMove()
+        val disposable = gateWay.getMove()
                 .map { t: String -> t.toInt() }
                 .subscribe(onMoveReceived, onError)
     }

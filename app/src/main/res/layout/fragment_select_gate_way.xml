@@ -23,20 +23,20 @@
             android:layout_marginBottom="8dp"
             android:onClick="@{() -> viewModel.setCloud()}"
             android:text="@string/selectgateway_cloud_btn"
-            app:layout_constraintBottom_toTopOf="@+id/socket_button"
+            app:layout_constraintBottom_toTopOf="@+id/local_button"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <Button
-            android:id="@+id/socket_button"
+            android:id="@+id/local_button"
             style="@style/AppStyle.Button"
             android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:onClick="@{() -> viewModel.setSocket()}"
-            android:text="@string/selectgateway_socket_btn"
+            android:onClick="@{() -> viewModel.setLocal()}"
+            android:text="@string/selectgateway_local_btn"
             app:layout_constraintBottom_toTopOf="@+id/bluetooth_button"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -52,7 +52,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/socket_button" />
+            app:layout_constraintTop_toBottomOf="@+id/local_button" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>

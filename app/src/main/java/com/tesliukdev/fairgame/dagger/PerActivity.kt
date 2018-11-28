@@ -1,10 +1,9 @@
 package com.tesliukdev.fairgame.dagger
 
-import java.lang.annotation.Retention
-import java.lang.annotation.RetentionPolicy
+import kotlin.annotation.Retention
 
 import javax.inject.Scope
 
 @Scope
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(AnnotationRetention.RUNTIME)
 annotation class PerActivity

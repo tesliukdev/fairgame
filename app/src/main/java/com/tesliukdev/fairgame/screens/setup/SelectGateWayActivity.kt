@@ -1,14 +1,14 @@
 package com.tesliukdev.fairgame.screens.setup
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu
 import android.view.MenuItem
 import com.tesliukdev.fairgame.R
+import com.tesliukdev.fairgame.screens.BaseActivity
 
 import kotlinx.android.synthetic.main.activity_select_gate_way.*
 
-class SelectGateWayActivity : AppCompatActivity() {
+class SelectGateWayActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

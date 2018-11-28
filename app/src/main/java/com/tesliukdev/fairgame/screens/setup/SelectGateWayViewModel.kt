@@ -2,19 +2,25 @@ package com.tesliukdev.fairgame.screens.setup
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import com.tesliukdev.fairgame.dagger.DaggerCloudComponent
+import com.tesliukdev.fairgame.dagger.DaggerLocalComponent
 import com.tesliukdev.fairgame.gameconnector.GameConnector
 import com.tesliukdev.fairgame.gateway.Cloud
+import com.tesliukdev.fairgame.gateway.local.rps.RpsLocal
 import java.lang.Exception
+import javax.inject.Inject
 
 class SelectGateWayViewModel : ViewModel() {
-
-    private val gameConnector = GameConnector()
+    @Inject
+    lateinit var gameConnector: GameConnector
     var selectedGateWay = MutableLiveData<String>()
     var error = MutableLiveData<String>()
+    private val cloudComponent by lazy { DaggerCloudComponent.create() }
+    private val localComponent by lazy { DaggerLocalComponent.create() }
 
     fun setCloud() {
         try {
-            gameConnector.gateway = Cloud()
+            gameConnector.gateway = cloudComponent.rpsCloud
             selectedGateWay.value = Cloud.gateWayName
         } catch (e: Exception) {
             error.value = "Check your internet connection and try again"
@@ -22,8 +28,9 @@ class SelectGateWayViewModel : ViewModel() {
 
     }
 
-    fun setSocket() {
-        error.value = "Sockets to be implemented"
+    fun setLocal() {
+        gameConnector.gateway = localComponent.rpsLocal
+        selectedGateWay.value = RpsLocal.gateWayName
     }
 
     fun setBluetooth() {

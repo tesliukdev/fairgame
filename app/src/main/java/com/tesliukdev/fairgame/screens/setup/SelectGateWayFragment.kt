@@ -9,9 +9,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.tesliukdev.fairgame.R
 import com.tesliukdev.fairgame.databinding.FragmentSelectGateWayBinding
+import com.tesliukdev.fairgame.screens.BaseActivity
 import com.tesliukdev.fairgame.screens.rockpapscis.RPSActivity
 
 /**
@@ -22,6 +22,7 @@ class SelectGateWayFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        injectDagger()
         val binding: FragmentSelectGateWayBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_select_gate_way, container, false)
         binding.viewModel = viewModel
         setListeners()
@@ -35,6 +36,10 @@ class SelectGateWayFragment : Fragment() {
 
     private fun next() {
        startActivity(RPSActivity.getInstance(requireContext()))
+    }
+
+    private fun injectDagger() {
+        (activity as BaseActivity?)?.appComponent()?.inject(viewModel)
     }
 
     @Suppress("UNUSED_ANONYMOUS_PARAMETER")
