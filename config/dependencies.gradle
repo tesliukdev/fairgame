@@ -12,7 +12,10 @@ ext {
     rxKotlinVersion = '2.2.0'
     rxAndroidVersion = '2.0.2'
     daggerVersion = '2.14.1'
-    retrofitVersion = '2.3.0'
+    retrofitVersion = '2.5.0'
+    mockitoVersion = '2.24.0'
+    okHttpVersion = '3.12.0'
+    mockitoKotlinVersion = '2.1.0'
 
     // Packages
     supportPackage = 'com.android.support'
@@ -24,6 +27,9 @@ ext {
     reactivexPackage = 'io.reactivex.rxjava2'
     daggerPackage = 'com.google.dagger'
     retrofitPackage = 'com.squareup.retrofit2'
+    mockitoPackage = 'org.mockito'
+    mockitoKotlinPackage = 'com.nhaarman.mockitokotlin2'
+    okHttpMockWebserverPackage = 'com.squareup.okhttp3'
 
     // Dependencies
     supportDependencies = [
@@ -58,7 +64,11 @@ ext {
             barista           : buildDependency(baristaPackage, 'barista', baristaVersion),
             liveDataTestHelper: buildDependency(architectureCorePackage, 'core-testing', architectureComponentVersion),
             runner            : buildDependency("${supportPackage}.test", 'runner', supportTestRunnerVersion),
-            espresso          : buildDependency("${supportPackage}.test.espresso", 'espresso-core', supportTestEspressoVersion)
+            rules             : buildDependency("${supportPackage}.test", 'rules', supportTestRunnerVersion),
+            espresso          : buildDependency("${supportPackage}.test.espresso", 'espresso-core', supportTestEspressoVersion),
+            mockito           : buildDependency(mockitoPackage, 'mockito-core', mockitoVersion),
+            mockitoKotlin     : buildDependency(mockitoKotlinPackage, 'mockito-kotlin', mockitoKotlinVersion),
+            okHttpMockWebserver : buildDependency(okHttpMockWebserverPackage, 'mockwebserver', okHttpVersion)
     ]
 
     kotlinDependency = buildDependency(kotlinPackage, 'kotlin-stdlib-jdk7', kotlin_version)

@@ -3,6 +3,8 @@ package com.tesliukdev.fairgame.screens.rockpapscis.model
 import android.arch.lifecycle.MutableLiveData
 import com.tesliukdev.fairgame.gameconnector.GameConnector
 import com.tesliukdev.fairgame.gateway.Gateway
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class RPSModel
@@ -50,6 +52,6 @@ constructor(gameConnector: GameConnector) {
     fun resetGame() {
         gameResult.value = null
         player1.value!!.score = 0
-        player1.value!!.score = 0
+        player2.value!!.score = 0
     }
 }

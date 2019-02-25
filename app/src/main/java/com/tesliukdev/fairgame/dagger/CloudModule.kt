@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
-class CloudModule {
+open class CloudModule {
 
     companion object {
         const val RPS_URL = "https://api.random.org"
@@ -19,7 +19,7 @@ class CloudModule {
 
     @Provides
     @Singleton
-    internal fun provideRpsApi(connectionPool: ConnectionPool): RpsApi {
+    internal open fun provideRpsApi(connectionPool: ConnectionPool): RpsApi {
         return createApi(RpsApi::class.java, RPS_URL, createClient(connectionPool))
     }
 

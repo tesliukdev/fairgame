@@ -5,7 +5,7 @@ import android.arch.lifecycle.ViewModel
 import com.tesliukdev.fairgame.dagger.DaggerCloudComponent
 import com.tesliukdev.fairgame.dagger.DaggerLocalComponent
 import com.tesliukdev.fairgame.gameconnector.GameConnector
-import com.tesliukdev.fairgame.gateway.Cloud
+import com.tesliukdev.fairgame.gateway.cloud.rps.RpsCloud
 import com.tesliukdev.fairgame.gateway.local.rps.RpsLocal
 import java.lang.Exception
 import javax.inject.Inject
@@ -21,7 +21,7 @@ class SelectGateWayViewModel : ViewModel() {
     fun setCloud() {
         try {
             gameConnector.gateway = cloudComponent.rpsCloud
-            selectedGateWay.value = Cloud.gateWayName
+            selectedGateWay.value = RpsCloud.gateWayName
         } catch (e: Exception) {
             error.value = "Check your internet connection and try again"
         }

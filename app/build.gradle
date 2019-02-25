@@ -40,7 +40,13 @@ dependencies {
     implementation retrofitDependencies.converterGson
     implementation daggerDependencies.dagger
     kapt daggerDependencies.daggerCompiler
-    testImplementation testingDependencies.junit
+    kaptAndroidTest daggerDependencies.daggerCompiler
+    androidTestImplementation testingDependencies.junit
+    androidTestImplementation testingDependencies.mockito
+    androidTestImplementation testingDependencies.mockitoKotlin
+    androidTestImplementation testingDependencies.liveDataTestHelper
     androidTestImplementation testingDependencies.runner
+    androidTestImplementation testingDependencies.rules
     androidTestImplementation testingDependencies.espresso
+    androidTestImplementation testingDependencies.okHttpMockWebserver
 }

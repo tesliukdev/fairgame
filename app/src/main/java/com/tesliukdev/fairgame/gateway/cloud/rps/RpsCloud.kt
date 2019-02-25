@@ -8,10 +8,11 @@ import javax.inject.Inject
 
 class RpsCloud
 @Inject
-constructor() : Gateway {
+constructor(private var rpsApi: RpsApi) : Gateway {
 
-    @Inject
-    lateinit var rpsApi: RpsApi
+    companion object {
+        val gateWayName: String = RpsCloud::class.java.simpleName
+    }
 
     override fun getMove(): Single<String> {
         return rpsApi.getMove(RpsRequest())
